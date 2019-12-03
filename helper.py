@@ -50,3 +50,16 @@ def text_cleaning(df,col):
     df[col] = df[col].apply(lambda x: x.replace(' ',''))
     df[col] = df[col].apply(lambda x: x.translate(str.maketrans('', '', string.punctuation)))
     df[col] = df[col].apply(lambda x: re.sub(r'[^\x00-\x7f]',"",x))
+
+def unique_elt(df,col):
+    """
+    Function to return a list of unique values contained in a Series of lists.
+    params : df : dataframe on which to apply the function.
+             col : dataframe's column on which to apply the function.
+    """
+    return list(set([a for b in df[col].tolist() for a in b]))
+
+
+
+
+
